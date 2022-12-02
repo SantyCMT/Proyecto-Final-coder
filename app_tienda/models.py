@@ -19,5 +19,3 @@ class Torta(models.Model):
     nombre_torta = models.CharField(max_length = 50)
     precio = models.IntegerField()
     descripcion = models.CharField(max_length = 100)
-
-    

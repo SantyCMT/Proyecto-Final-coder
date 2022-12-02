@@ -10,5 +10,7 @@ urlpatterns = [
     path("busqueda/torta/",vista_resultado_torta, name="app_tienda-busqueda-torta"),
     path("busqueda/cafe/", vista_resultado_cafe, name="app_tienda-busqueda-cafe"),
     path("nosotros/", vista_nosotros, name = "app_tienda-nosotros"),
+    path("usuario/iniciar_session/", iniciar_sesion , name= "auth-login"),
+    path("usuario/registrar/", registrar_usuario, name="auth-register")
 
 ]

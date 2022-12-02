@@ -1,0 +1,18 @@
+{% extends 'app_tienda/base2.html' %}
+
+{% block contenido %}
+
+{% if errors %}
+    <p style="color: red ;"> Error al registrarte {{errors}}</p>
+{% endif %}
+
+<form style="color:black ;" st method="post">
+    {% csrf_token %}
+
+    {{form.as_p}}
+
+    <input  type="submit" value="Registrar usuario">
+
+</form>
+
+{% endblock %}
