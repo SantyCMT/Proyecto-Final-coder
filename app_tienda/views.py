@@ -12,16 +12,6 @@ def vista_inicio(request):
 def vista_nosotros(request):
     return render(request, "app_tienda/nosotros.html")
 
-def vista_registro(request):
-    if request.method == "POST":
-        formulario = UsuarioForm(request.POST)
-        if formulario.is_valid():
-            data = formulario.cleaned_data
-            user = Usuario(nombre = data["nombre"], apellido = data["apellido"], edad = data["edad"], email = data["email"], nombre_usuario = data["nombre_usuario"], contrasenia = data["contrasenia"])
-            user.save()
-    formulario = UsuarioForm()
-    return render(request, "app_tienda/registro.html", {"formulario": formulario})
-
 def vista_cafe(request):
     if request.method == "POST":
         formulario = CafeForm(request.POST)
@@ -42,8 +32,6 @@ def vista_tortas(request):
     formulario = TortaForm()
     return render(request,"app_tienda/tortas.html",  {"formulario": formulario})
 
-def vista_inicio_sesion(request):
-    return render(request, "app_tienda/iniciar_sesion.html")
 
 def vista_busqueda(request):
     return render(request, "app_tienda/busqueda.html")
