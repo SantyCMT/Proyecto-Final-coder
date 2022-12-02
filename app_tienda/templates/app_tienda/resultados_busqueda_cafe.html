@@ -1,0 +1,17 @@
+{% extends 'app_tienda/base.html' %}
+
+{% block contenido %}
+
+{% if lista_de_cafes %}
+
+<ul>
+    {% for cafe in lista_de_cafes %}
+        <p> nombre: {{ cafe.nombre_cafe }}</p>
+        <p> precio: {{ cafe.precio }}$ </p>
+        <li> {{cafe.descripcion}} </li>
+    {% endfor %}
+</ul>
+
+{% endif %}
+
+{% endblock %}

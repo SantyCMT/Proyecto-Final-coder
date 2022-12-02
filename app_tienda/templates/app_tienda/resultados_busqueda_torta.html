@@ -1,0 +1,17 @@
+{% extends 'app_tienda/base.html' %}
+
+{% block contenido %}
+
+{% if lista_de_torta %}
+
+<ul>
+    {% for torta in lista_de_torta %}
+        <p> nombre: {{ torta.nombre_torta }}</p>
+        <p> precio: {{ torta.precio }} $</p>
+        <li> {{ torta.descripcion }} </li>
+    {% endfor %}
+</ul>
+
+{% endif %}
+
+{% endblock %}
