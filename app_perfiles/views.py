@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
 from app_perfiles.forms import *
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def registrar_usuario(request):
@@ -43,3 +46,30 @@ def iniciar_sesion(request):
 
     formulario = AuthenticationForm()
     return render(request, "app_perfiles/login.html",{"form" : formulario, "errors" : errors})
+
+
+@login_required
+def edit_perfil(request):
+    usuario = request.user
+
+    if request.method == "POST":
+
+        formulario = UserEditForm(request.POST)
+        
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+
+            usuario.first_name = data["first_name"]
+            usuario.last_name = data["last_name"]
+            usuario.email = data ["email"]
+
+            usuario.save()
+            return redirect("app_tienda-inicio")
+        else:
+            return render(request, "app_perfiles/edit_perfil.html", {"form": formulario, "erros": formulario.errors})
+
+    else:
+
+        formulario = UserEditForm(initial = {"email": usuario.email,"first_name": usuario.first_name, "last_name": usuario.last_name})
+
+    return render(request, "app_perfiles/edit_perfil.html", {"form": formulario})
