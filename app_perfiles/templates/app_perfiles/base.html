@@ -38,6 +38,7 @@
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-inicio' %} ">Inicio</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-busqueda-torta' %}">Buscar</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-nosotros' %}">Nosotros</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-menu' %} ">Menu</a></li>
 
                         {% if request.user.is_authenticated %}
                             <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-cafe' %}">Cafe</a></li>

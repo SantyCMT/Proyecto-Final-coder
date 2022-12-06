@@ -1,7 +1,7 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from app_tienda.forms import *
 from app_tienda.models import *
-
 
 # Create your views here.
 
@@ -20,6 +20,20 @@ def vista_cafe(request):
             cafe.save()
     formulario = CafeForm()
     return render(request, "app_tienda/cafe.html" , {"formulario": formulario})
+
+def vista_menu_cafes(request):
+    cafes = Cafe.objects.all()
+    tortas = Torta.objects.all()
+    contexto = {"cafes": cafes, "tortas": tortas}
+    return render(request, "app_tienda/menu.html", contexto)
+
+
+
+def vista_eliminar(request, id):
+    cafes = Cafe.objects.get(id=id)
+    cafes.delete()
+    return redirect("app_tienda-menu")
+    
 
 def vista_tortas(request):
     if request.method == "POST":

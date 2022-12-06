@@ -1,0 +1,21 @@
+{% extends 'app_tienda/base.html' %}
+
+{% block contenido %}
+
+
+
+{% for c in cafes %}
+    <li>{{c}} <a href="{% url 'app_tienda-borrar-menu' cafes.id %}">Borrar</a></li>
+
+{% endfor %}
+
+
+{% for t in tortas %}
+    <li>{{t}}</li>
+{% endfor %}
+
+
+
+ 
+
+{% endblock %}
