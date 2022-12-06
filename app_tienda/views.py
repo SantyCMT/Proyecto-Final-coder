@@ -20,14 +20,14 @@ def vista_cafe(request):
             cafe.save()
     formulario = CafeForm()
     return render(request, "app_tienda/cafe.html" , {"formulario": formulario})
+    
 
 def vista_menu_cafes(request):
     cafes = Cafe.objects.all()
     tortas = Torta.objects.all()
     contexto = {"cafes": cafes, "tortas": tortas}
     return render(request, "app_tienda/menu.html", contexto)
-
-
+    
 
 def vista_eliminar(request, id):
     cafes = Cafe.objects.get(id=id)
