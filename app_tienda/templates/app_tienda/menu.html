@@ -12,7 +12,7 @@
 
 
 {% for t in tortas %}
-    <li>{{t}}</li>
+    <li>{{t}} <a href="{% url 'app_tienda-borrar-menu-torta' t.id %}">Borrar</a></li>
 {% endfor %}
 
 

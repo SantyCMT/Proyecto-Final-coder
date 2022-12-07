@@ -33,6 +33,11 @@ def vista_eliminar(request, id):
     cafes = Cafe.objects.get(id=id)
     cafes.delete()
     return redirect("app_tienda-menu")
+
+def vista_eliminar_torta(request, id):
+    tortas = Torta.objects.get(id=id)
+    tortas.delete()
+    return redirect("app_tienda-menu")
     
 
 def vista_tortas(request):
