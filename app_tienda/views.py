@@ -29,7 +29,7 @@ def vista_menu_cafes(request):
     return render(request, "app_tienda/menu.html", contexto)
     
 
-def vista_eliminar(request, id):
+def vista_eliminar_cafe(request, id):
     cafes = Cafe.objects.get(id=id)
     cafes.delete()
     return redirect("app_tienda-menu")
