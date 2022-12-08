@@ -6,7 +6,7 @@
 
 {% for c in cafes %}
 
-    <li>{{c}} <a href="{% url 'app_tienda-borrar-menu' c.id %}">Borrar</a></li>
+    <li>{{c}} <a href="{% url 'app_tienda-borrar-menu' c.id %}">Borrar</a> <a href="{% url 'app_tienda-editar-menu' c.id %}">Editar</a></li>
 
 {% endfor %}
 
