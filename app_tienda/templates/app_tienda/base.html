@@ -42,8 +42,8 @@
                         {% if request.user.is_authenticated %}
                             <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-cafe' %}">Cafe</a></li>
                             <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-tortas' %}">Tortas</a></li>
-                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'auth-edit_profile' %}">editar</a></li>
                             <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-menu' %} ">Menu</a></li>
+                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'auth-edit_profile' %}">editar pefil</a></li>
                             <a class="nav-item px-lg-4" href="{% url 'auth-logout' %}">Logout</a>
                             <p class="small text-muted mb-4 mb-lg-0""> Hola {{request.user.username}} ! </p>
                             
