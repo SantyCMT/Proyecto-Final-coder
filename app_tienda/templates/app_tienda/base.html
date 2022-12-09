@@ -22,9 +22,6 @@
             <h1 class="site-heading text-center text-faded d-none d-lg-block">
                 <span class="site-heading-upper text-primary mb-3">Cafe Girona </span>
                 </h1>
-            <h2> 
-                <span class="site-heading-upper text-primary mb-3">Tu Lugar </span>
-                </h2>
 
         </header>
         <!-- Navigation-->
@@ -39,11 +36,14 @@
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-busqueda-torta' %}">Buscar</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-nosotros' %}">Nosotros</a></li>
 
+
                         {% if request.user.is_authenticated %}
-                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-cafe' %}">Cafe</a></li>
-                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-tortas' %}">Tortas</a></li>
+                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-vista-admin' %}">Editar</a></li>
                             <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-menu' %} ">Menu</a></li>
                             <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'auth-edit_profile' %}">editar pefil</a></li>
+                            {% block admin %}
+
+                            {% endblock %}
                             <a class="nav-item px-lg-4" href="{% url 'auth-logout' %}">Logout</a>
                             <p class="small text-muted mb-4 mb-lg-0""> Hola {{request.user.username}} ! </p>
                             

@@ -1,0 +1,15 @@
+{% extends 'app_tienda/base2.html' %}
+
+{% block contenido %}
+
+|Ya puedes Editar o Agregar nuevos productos|
+
+{% endblock %}
+
+
+{% block admin %}
+<li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-cafe' %}">Cafe</a></li>
+<li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-tortas' %}">Tortas</a></li>
+<li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-bebidas' %}">Bebidas</a></li>
+<li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-salados' %}">Salados</a></li>
+{% endblock %}

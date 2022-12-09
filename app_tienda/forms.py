@@ -10,6 +10,8 @@ class UsuarioForm(forms.Form):
     nombre_usuario = forms.CharField()
     contrasenia = forms.CharField()
 
+
+
 class CafeForm(forms.Form):
     nombre_cafe = forms.CharField()
     precio = forms.IntegerField()
@@ -19,6 +21,19 @@ class TortaForm(forms.Form):
      nombre_torta = forms.CharField()
      precio = forms.IntegerField()
      descripcion = forms.CharField()
+
+class BebidasForm(forms.Form):
+    nombre_bebida = forms.CharField()
+    precio = forms.IntegerField()
+
+class SaladosForm(forms.Form):
+    nombre_salados = forms.CharField()
+    precio = forms.IntegerField()
+
+class Panqueques_WaflesForm(forms.Form):
+    nombre_cafe = forms.CharField()
+    precio = forms.IntegerField()
+    
      
 
 class UserRegisterForm(UserCreationForm):

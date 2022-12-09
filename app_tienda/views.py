@@ -11,6 +11,13 @@ def vista_inicio(request):
 def vista_nosotros(request):
     return render(request, "app_tienda/nosotros.html")
 
+def vista_admin(request):
+    return render(request, "app_tienda/editar_productos.html")
+
+
+
+#? Falta el accesos por nivel de cuenta(Cliente, Empleado, Jefe)
+
 def vista_cafe(request):
     if request.method == "POST":
         formulario = CafeForm(request.POST)
@@ -38,6 +45,9 @@ def vista_eliminar_torta(request, id):
     tortas = Torta.objects.get(id=id)
     tortas.delete()
     return redirect("app_tienda-menu")
+
+
+#? Falta Avatar y cambiar avatar
 
 def vista_edit_menu(request, id):
     cafes = Cafe.objects.get(id=id)
@@ -70,6 +80,32 @@ def vista_tortas(request):
             torta.save()
     formulario = TortaForm()
     return render(request,"app_tienda/tortas.html",  {"formulario": formulario})
+
+
+def vista_bebidas(request):
+    if request.method == "POST":
+        formulario = BebidasForm(request.POST)
+        
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            bebida = Bebidas(nombre_bebida = data["nombre_bebida"], precio = data["precio"])
+            bebida.save()
+
+    formulario = BebidasForm()
+    return render(request, "app_tienda/bebidas.html", {"formulario" : formulario})
+
+
+def vista_salados(request):
+    if request.method == "POST":
+        formulario = SaladosForm(request.POST)
+
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            salado = Salados( ombre_salados = data["nombre_salados"], precio = data["precio"])
+            salado.save()
+
+    formulario = SaladosForm()
+    return render(request, "app_tienda/salados.html", {"formulario" : formulario})
 
 
 def vista_busqueda(request):
