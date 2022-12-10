@@ -162,8 +162,8 @@ def vista_resultado_cafe(request):
 
         else:
             lista_cafes = Cafe.objects.filter(nombre_cafe=name_cafe)
-            return render(request, "app_tienda/resultados_busqueda_cafe.html", {"lista_de_cafes": lista_cafes})
-    return render(request, "app_tienda/busqueda.html", {"lista_de_cafe": []})
+            return render(request, "app_tienda/resultados_busqueda_cafe.html", {"lista_cafes": lista_cafes})
+    return render(request, "app_tienda/busqueda.html", {"lista_cafes": []})
 
 
 

@@ -2,10 +2,10 @@
 
 {% block contenido %}
 
-{% if lista_de_cafes %}
+{% if lista_cafes %}
 
 <ul>
-    {% for cafe in lista_de_cafes %}
+    {% for cafe in lista_cafes %}
         <p> nombre: {{ cafe.nombre_cafe }}</p>
         <p> precio: {{ cafe.precio }}$ </p>
         <li> {{cafe.descripcion}} </li>
