@@ -31,7 +31,7 @@ class SaladosForm(forms.Form):
     precio = forms.IntegerField()
 
 class Panqueques_WaflesForm(forms.Form):
-    nombre_cafe = forms.CharField()
+    nombre_PW = forms.CharField()
     precio = forms.IntegerField()
     
      

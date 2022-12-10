@@ -32,7 +32,10 @@ def vista_cafe(request):
 def vista_menu_cafes(request):
     cafes = Cafe.objects.all()
     tortas = Torta.objects.all()
-    contexto = {"cafes": cafes, "tortas": tortas}
+    bebida = Bebidas.objects.all()
+    salados = Salados.objects.all()
+    pan_waf = Panqueques_Wafles.objects.all()
+    contexto = {"cafes": cafes, "tortas": tortas, "bebida": bebida, "salados": salados, "pan_waf": pan_waf}
     return render(request, "app_tienda/menu.html", contexto)
     
 
@@ -46,6 +49,20 @@ def vista_eliminar_torta(request, id):
     tortas.delete()
     return redirect("app_tienda-menu")
 
+def vista_eliminar_bebida(request, id):
+    bebida = Bebidas.objects.get(id=id)
+    bebida.delete()
+    return redirect("app_tienda-menu")
+
+def vista_eliminar_salados(request, id):
+    salado = Salados.objects.get(id=id)
+    salado.delete()
+    return redirect("app_tienda-menu")
+
+def vista_eliminar_panqueque_wafle(request, id):
+    pan_waf = Panqueques_Wafles.objects.get(id=id)
+    Panqueques_Wafles.delete()
+    return redirect("app_tienda-menu")
 
 #? Falta Avatar y cambiar avatar
 
@@ -101,11 +118,25 @@ def vista_salados(request):
 
         if formulario.is_valid():
             data = formulario.cleaned_data
-            salado = Salados( ombre_salados = data["nombre_salados"], precio = data["precio"])
+            salado = Salados( nombre_salados = data["nombre_salados"], precio = data["precio"])
             salado.save()
 
     formulario = SaladosForm()
     return render(request, "app_tienda/salados.html", {"formulario" : formulario})
+
+
+def vista_panqueques_wafles(request):
+    if request.method == "POST":
+        formulario = Panqueques_WaflesForm(request.POST)
+
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            pan_waf = Panqueques_Wafles( nombre_PW = data["nombre_PW"], precio = data["precio"])
+            pan_waf.save()
+
+    formulario = Panqueques_WaflesForm()
+    return render(request, "app_tienda/panqueques_wafles.html", {"formulario" : formulario})
+
 
 
 def vista_busqueda(request):

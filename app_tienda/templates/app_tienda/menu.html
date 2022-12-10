@@ -1,22 +1,48 @@
-{% extends 'app_tienda/base.html' %}
+{% extends 'app_tienda/menutemplate.html' %}
 
 {% block contenido %}
 
 
+<table style="background: rgba(255, 128, 0, 0.3); border: 12px solid rgba(0, 0, 0, 0.3);">
+    <tr>
+        <th>cafes</th>
+    {% for c in cafes %}
+        
+        <td>{{c}} <a href="{% url 'app_tienda-borrar-menu' c.id %}">Borrar</a> <a href="{% url 'app_tienda-editar-menu' c.id %}">Editar</a></td>
 
-{% for c in cafes %}
+    {% endfor %}
+    </tr>
+    <tr>
+        <th>tortas</th>
+    {% for t in tortas %}
+        
+        <td>{{t}} <a href="{% url 'app_tienda-borrar-menu-torta' t.id %}">Borrar</a></td>
 
-    <li>{{c}} <a href="{% url 'app_tienda-borrar-menu' c.id %}">Borrar</a> <a href="{% url 'app_tienda-editar-menu' c.id %}">Editar</a></li>
+    {% endfor %}
+    </tr>
+    <tr>
+        <th>bebidas</th>
+    {% for b in bebida %}
+        
+        <td> {{b}} <a href="{% url 'app_tienda-borrar-menu-bebida' b.id %}">Borrar</a> </td>
 
-{% endfor %}
+    {% endfor %}
+    </tr>
+    <tr>
+        <th>salados</th>
+    {% for s in salados %}
+        
+        <td> {{s}} <a href="{% url 'app_tienda-borrar-menu-salados' s.id %}">Borrar</a> </td>
 
+    {% endfor %}
+    </tr>
+    <tr>
+        <th>Panqueque y wafles</th>
+    {% for pw in pan_waf %}
+        
+        <td> {{pw}} <a href="{% url 'app_tienda-borrar-menu-pan_waf' pw.id %}">Borrar</a> </td>
 
-{% for t in tortas %}
-    <li>{{t}} <a href="{% url 'app_tienda-borrar-menu-torta' t.id %}">Borrar</a></li>
-{% endfor %}
-
-
-
- 
-
+    {% endfor %}
+    </tr>
+</table>
 {% endblock %}

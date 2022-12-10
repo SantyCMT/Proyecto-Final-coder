@@ -32,9 +32,17 @@ class Salados(models.Model):
     nombre_salados = models.CharField(max_length=100)
     precio = models.IntegerField()
 
+    def __str__(self):
+        return f"{self.nombre_salados} | Precio: {self.precio}"
+
+
 
 class Panqueques_Wafles(models.Model):
     nombre_PW = models.CharField(max_length= 100)
     precio = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.nombre_PW} | Precio: {self.precio}"
+
 
 
