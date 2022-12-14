@@ -2,6 +2,9 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from app_tienda.forms import *
 from app_tienda.models import *
+from Tienda_online.settings import BASE_DIR
+import os
+from django.views.generic import ListView
 
 # Create your views here.
 
@@ -71,21 +74,17 @@ def vista_edit_menu(request, id):
 
     if request.method == "POST":
         formulario = CafeForm(request.POST)
-
         if formulario.is_valid():
             data = formulario.cleaned_data
-
-            cafes.nombre_cafe = data["nombre_cafe"]
-            cafes.precio = data["precio"]
-            cafes.descripcion = data ["descripcion"]
-            cafes.save()
+            cafe = Cafe(nombre_cafe = data["nombre_cafe"], precio = data["precio"], descripcion = data["descripcion"])
+            cafe.save()
             return redirect("app_tienda-menu")
         else:
             return render(request, "app_tienda/menu.html", {"formulario": formulario, "errores": formulario.errores})
     
     else:
         formulario = CafeForm(initial={"nombre":cafes.nombre_cafe, "precio":cafes.precio, "descripcion":cafes.descripcion})
-        return render(request, "app_tienda/menu.html", {"formulario": formulario, "errores": ""})
+    return render(request, "app_tienda/menu.html", {"formulario": formulario, "nombre_cafe": ""})
 
 
 def vista_tortas(request):

@@ -13,4 +13,11 @@
 <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-bebidas' %}">Bebidas</a></li>
 <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-salados' %}">Salados</a></li>
 <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-panqueques_wafles' %}">Panqueque y Wafles</a></li>
+
+<form method="post">
+    {% csrf_token %}
+    {{ formulario.as_p }}
+    <input type="submit" value="Actualizar">
+</form>
+
 {% endblock %}
