@@ -8,7 +8,7 @@ class Cafe(models.Model):
     descripcion = models.CharField(max_length = 100)
     
     def __str__(self):
-        return f"{self.nombre_cafe} | Precio: {self.precio}"
+        return f"{self.nombre_cafe} Precio: {self.precio}"
 
 class Torta(models.Model):
     nombre_torta = models.CharField(max_length = 50)
@@ -16,7 +16,7 @@ class Torta(models.Model):
     descripcion = models.CharField(max_length = 100)
 
     def __str__(self):
-        return f"{self.nombre_torta} | Precio: {self.precio} "
+        return f"{self.nombre_torta} Precio: {self.precio} "
         
  
 
@@ -25,7 +25,7 @@ class Bebidas(models.Model):
     precio = models.IntegerField()
 
     def __str__(self):
-        return f"{self.nombre_bebida} | Precio: {self.precio}"
+        return f"{self.nombre_bebida} Precio: {self.precio}"
 
 
 class Salados(models.Model):
@@ -33,7 +33,7 @@ class Salados(models.Model):
     precio = models.IntegerField()
 
     def __str__(self):
-        return f"{self.nombre_salados} | Precio: {self.precio}"
+        return f"{self.nombre_salados} Precio: {self.precio}"
 
 
 
@@ -42,7 +42,7 @@ class Panqueques_Wafles(models.Model):
     precio = models.IntegerField()
 
     def __str__(self):
-        return f"{self.nombre_PW} | Precio: {self.precio}"
+        return f"{self.nombre_PW} Precio: {self.precio}"
 
 
 

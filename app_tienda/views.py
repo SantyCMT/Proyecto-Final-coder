@@ -64,7 +64,7 @@ def vista_eliminar_salados(request, id):
 
 def vista_eliminar_panqueque_wafle(request, id):
     pan_waf = Panqueques_Wafles.objects.get(id=id)
-    Panqueques_Wafles.delete()
+    pan_waf.delete()
     return redirect("app_tienda-menu")
 
 #? Falta Avatar y cambiar avatar
