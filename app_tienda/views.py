@@ -70,21 +70,30 @@ def vista_eliminar_panqueque_wafle(request, id):
 #? Falta Avatar y cambiar avatar
 
 def vista_edit_menu(request, id):
+    
     cafes = Cafe.objects.get(id=id)
 
     if request.method == "POST":
+
         formulario = CafeForm(request.POST)
+
         if formulario.is_valid():
             data = formulario.cleaned_data
-            cafe = Cafe(nombre_cafe = data["nombre_cafe"], precio = data["precio"], descripcion = data["descripcion"])
-            cafe.save()
+
+            cafes.nombre_cafe = data["nombre_cafe"]
+            cafes.precio = data["precio"]
+            cafes.descripcion = data["descripcion"]
+
+            cafes.save()
+
             return redirect("app_tienda-menu")
+
         else:
-            return render(request, "app_tienda/menu.html", {"formulario": formulario, "errores": formulario.errores})
+            return render(request, "app_tienda/editar_cafe.html", {"formulario": formulario, "errores": formulario.errores})
     
     else:
         formulario = CafeForm(initial={"nombre":cafes.nombre_cafe, "precio":cafes.precio, "descripcion":cafes.descripcion})
-    return render(request, "app_tienda/menu.html", {"formulario": formulario, "nombre_cafe": ""})
+    return render(request, "app_tienda/editar_cafe.html", {"formulario": formulario, "nombre_cafe": ""})
 
 
 def vista_tortas(request):
