@@ -92,7 +92,7 @@ def vista_edit_menu(request, id):
             return render(request, "app_tienda/editar_cafe.html", {"formulario": formulario, "errores": formulario.errores})
     
     else:
-        formulario = CafeForm(initial={"nombre":cafes.nombre_cafe, "precio":cafes.precio, "descripcion":cafes.descripcion})
+        formulario = CafeForm(initial={"nombre_cafe":cafes.nombre_cafe, "precio":cafes.precio, "descripcion":cafes.descripcion})
     return render(request, "app_tienda/editar_cafe.html", {"formulario": formulario, "nombre_cafe": ""})
 
 
