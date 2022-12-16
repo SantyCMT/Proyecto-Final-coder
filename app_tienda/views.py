@@ -89,22 +89,14 @@ def vista_edit_cafe(request, id):
             return redirect("app_tienda-menu")
 
         else:
-            return render(request, "app_tienda/editar_cafe.html", {"formulario": formulario, "errores": formulario.errores})
+            return render(request, "app_tienda/editar_menu.html", {"formulario": formulario, "errores": formulario.errores})
     
     else:
         formulario = CafeForm(initial={"nombre_cafe":cafes.nombre_cafe, "precio":cafes.precio, "descripcion":cafes.descripcion})
-    return render(request, "app_tienda/editar_cafe.html", {"formulario": formulario, "nombre_cafe": ""})
+    return render(request, "app_tienda/editar_menu.html", {"formulario": formulario, "nombre_cafe": ""})
 
 
-def vista_tortas(request):
-    if request.method == "POST":
-        formulario = TortaForm(request.POST)
-        if formulario.is_valid():
-            data = formulario.cleaned_data
-            torta = Torta(nombre_torta = data["nombre_torta"], precio = data["precio"], descripcion = data["descripcion"])
-            torta.save()
-    formulario = TortaForm()
-    return render(request,"app_tienda/tortas.html",  {"formulario": formulario})
+
 
 
 
@@ -129,12 +121,105 @@ def vista_edit_torta(request, id):
             return redirect("app_tienda-menu")
 
         else:
-            return render(request, "app_tienda/editar_torta.html", {"formulario": formulario, "errores": formulario.errores})
+            return render(request, "app_tienda/editar_menu.html", {"formulario": formulario, "errores": formulario.errores})
     
     else:
         formulario = TortaForm(initial={"nombre_torta":tortas.nombre_torta, "precio":tortas.precio, "descripcion":tortas.descripcion})
-    return render(request, "app_tienda/editar_torta.html", {"formulario": formulario, "nombre_torta": ""})
+    return render(request, "app_tienda/editar_menu.html", {"formulario": formulario, "nombre_torta": ""})
 
+
+
+def vista_edit_bebida(request, id):
+    
+    bebida = Bebidas.objects.get(id=id)
+
+    if request.method == "POST":
+
+        formulario = BebidasForm(request.POST)
+
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+
+            bebida.nombre_bebida = data["nombre_bebida"]
+            bebida.precio = data["precio"]
+
+            bebida.save()
+
+            return redirect("app_tienda-menu")
+
+        else:
+            return render(request, "app_tienda/editar_menu.html", {"formulario": formulario, "errores": formulario.errores})
+    
+    else:
+        formulario = BebidasForm(initial={"nombre_bebida":bebida.nombre_bebida, "precio":bebida.precio})
+    return render(request, "app_tienda/editar_menu.html", {"formulario": formulario, "nombre_bebida": ""})
+
+
+
+
+def vista_edit_salados(request, id):
+    
+    salado = Salados.objects.get(id=id)
+
+    if request.method == "POST":
+
+        formulario = SaladosForm(request.POST)
+
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+
+            salado.nombre_salados = data["nombre_salado"]
+            salado.precio = data["precio"]
+
+            salado.save()
+
+            return redirect("app_tienda-menu")
+
+        else:
+            return render(request, "app_tienda/editar_menu.html", {"formulario": formulario, "errores": formulario.errores})
+    
+    else:
+        formulario = SaladosForm(initial={"nombre_salado":salado.nombre_salados, "precio":salado.precio})
+    return render(request, "app_tienda/editar_menu.html", {"formulario": formulario, "nombre_salado": ""})
+
+
+
+def vista_edit_pw(request, id):
+    
+    pan_wd = Panqueques_Wafles.objects.get(id=id)
+
+    if request.method == "POST":
+
+        formulario = Panqueques_WaflesForm(request.POST)
+
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+
+            pan_wd.nombre_PW = data["nombre_pan_waf"]
+            pan_wd.precio = data["precio"]
+
+            pan_wd.save()
+
+            return redirect("app_tienda-menu")
+
+        else:
+            return render(request, "app_tienda/editar_menu.html", {"formulario": formulario, "errores": formulario.errores})
+    
+    else:
+        formulario = Panqueques_WaflesForm(initial={"nombre_pan_wd":pan_wd.nombre_PW, "precio":pan_wd.precio})
+    return render(request, "app_tienda/editar_menu.html", {"formulario": formulario, "nombre_pan_wd": ""})
+
+
+
+def vista_tortas(request):
+    if request.method == "POST":
+        formulario = TortaForm(request.POST)
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            torta = Torta(nombre_torta = data["nombre_torta"], precio = data["precio"], descripcion = data["descripcion"])
+            torta.save()
+    formulario = TortaForm()
+    return render(request,"app_tienda/tortas.html",  {"formulario": formulario})
 
 
 def vista_bebidas(request):

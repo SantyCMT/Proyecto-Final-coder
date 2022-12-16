@@ -26,7 +26,7 @@
         <th>bebidas</th>
     {% for b in bebida %}
         
-        <td> {{b}} <a href="{% url 'app_tienda-borrar-menu-bebida' b.id %}">Borrar</a> </td>
+        <td> {{b}} <a href="{% url 'app_tienda-borrar-menu-bebida' b.id %}">Borrar</a> <a  href="{% url 'app_tienda-editar-bebida' b.id %}">Editar</a></td>
 
     {% endfor %}
     </tr>
@@ -34,7 +34,7 @@
         <th>salados</th>
     {% for s in salados %}
         
-        <td> {{s}} <a href="{% url 'app_tienda-borrar-menu-salados' s.id %}">Borrar</a> </td>
+        <td> {{s}} <a href="{% url 'app_tienda-borrar-menu-salados' s.id %}">Borrar</a> <a  href="{% url 'app_tienda-editar-salados' s.id %}">Editar</a> </td>
 
     {% endfor %}
     </tr>
@@ -42,7 +42,7 @@
         <th>Panqueque y wafles</th>
     {% for pw in pan_waf %}
         
-        <td> {{pw}} <a href="{% url 'app_tienda-borrar-menu-pan_waf' pw.id %}">Borrar</a> </td>
+        <td> {{pw}} <a href="{% url 'app_tienda-borrar-menu-pan_waf' pw.id %}">Borrar</a> <a  href="{% url 'app_tienda-editar-Panqueques y Waffles' pw.id %}">Editar</a> </td>
 
     {% endfor %}
     </tr>
