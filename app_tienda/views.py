@@ -69,7 +69,7 @@ def vista_eliminar_panqueque_wafle(request, id):
 
 #? Falta Avatar y cambiar avatar
 
-def vista_edit_menu(request, id):
+def vista_edit_cafe(request, id):
     
     cafes = Cafe.objects.get(id=id)
 
@@ -105,6 +105,63 @@ def vista_tortas(request):
             torta.save()
     formulario = TortaForm()
     return render(request,"app_tienda/tortas.html",  {"formulario": formulario})
+
+
+
+def vista_edit_cafe(request, id):
+    
+    cafes = Cafe.objects.get(id=id)
+
+    if request.method == "POST":
+
+        formulario = CafeForm(request.POST)
+
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+
+            cafes.nombre_cafe = data["nombre_cafe"]
+            cafes.precio = data["precio"]
+            cafes.descripcion = data["descripcion"]
+
+            cafes.save()
+
+            return redirect("app_tienda-menu")
+
+        else:
+            return render(request, "app_tienda/editar_cafe.html", {"formulario": formulario, "errores": formulario.errores})
+    
+    else:
+        formulario = CafeForm(initial={"nombre_cafe":cafes.nombre_cafe, "precio":cafes.precio, "descripcion":cafes.descripcion})
+    return render(request, "app_tienda/editar_cafe.html", {"formulario": formulario, "nombre_cafe": ""})
+
+
+
+def vista_edit_torta(request, id):
+    
+    tortas = Torta.objects.get(id=id)
+
+    if request.method == "POST":
+
+        formulario = TortaForm(request.POST)
+
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+
+            tortas.nombre_torta = data["nombre_torta"]
+            tortas.precio = data["precio"]
+            tortas.descripcion = data["descripcion"]
+
+            tortas.save()
+
+            return redirect("app_tienda-menu")
+
+        else:
+            return render(request, "app_tienda/editar_torta.html", {"formulario": formulario, "errores": formulario.errores})
+    
+    else:
+        formulario = TortaForm(initial={"nombre_torta":tortas.nombre_torta, "precio":tortas.precio, "descripcion":tortas.descripcion})
+    return render(request, "app_tienda/editar_torta.html", {"formulario": formulario, "nombre_torta": ""})
+
 
 
 def vista_bebidas(request):

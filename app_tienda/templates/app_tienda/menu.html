@@ -10,7 +10,7 @@
         <th>cafes</th>
     {% for c in cafes %}
         
-        <td>{{c}} <a class="" href="{% url 'app_tienda-borrar-menu' c.id %}">Borrar</a> <a  href="{% url 'app_tienda-editar-menu' c.id %}">Editar</a></td>
+        <td>{{c}} <a class="" href="{% url 'app_tienda-borrar-menu' c.id %}">Borrar</a> <a  href="{% url 'app_tienda-editar-cafe' c.id %}">Editar</a></td>
 
     {% endfor %}
     </tr>
@@ -18,7 +18,7 @@
         <th>tortas</th>
     {% for t in tortas %}
         
-        <td>{{t}} <a  href="{% url 'app_tienda-borrar-menu-torta' t.id %}">Borrar</a></td>
+        <td>{{t}} <a  href="{% url 'app_tienda-borrar-menu-torta' t.id %}">Borrar</a> <a  href="{% url 'app_tienda-editar-torta' t.id %}">Editar</a></td>
 
     {% endfor %}
     </tr>
