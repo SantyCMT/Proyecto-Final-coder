@@ -1,0 +1,19 @@
+{% extends 'app_tienda/base.html' %}
+
+
+{% block contenido %}
+
+{% if errors %}
+
+    <p>Error encontrado</p>
+    <p style="color: red" >{{errors}}</p>
+
+{% endif %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <input type="submit" value="Guardar">
+</form>
+{% endblock %}

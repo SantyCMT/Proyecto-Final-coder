@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
 from app_perfiles.forms import *
+from app_perfiles.models import Avatar
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -73,3 +74,27 @@ def edit_perfil(request):
         formulario = UserEditForm(initial = {"email": usuario.email,"first_name": usuario.first_name, "last_name": usuario.last_name})
 
     return render(request, "app_perfiles/edit_perfil.html", {"form": formulario})
+
+
+
+@login_required
+def avatar_user(request):
+
+    if request.method == "POST":
+        formulario = AvatarForm(request.POST, files= request.FILES)
+        print(request.FILES, request.POST)
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+
+            usuario = request.user
+
+            avatar = Avatar(user=usuario, imagen = data["imagen"])
+            avatar.save()
+
+            return redirect("app_tienda-inicio")
+        else:
+            return render(request, "app_perfiles/agregar_avatar.html", {"form": formulario, "errors": formulario.errors})
+        
+    formulario = AvatarForm()
+
+    return render(request, "app_perfiles/agregar_avatar.html", {"form": formulario})

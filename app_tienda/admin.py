@@ -9,3 +9,4 @@ admin.site.register(Bebidas)
 admin.site.register(Salados)
 admin.site.register(Panqueques_Wafles)
 
+

@@ -41,12 +41,15 @@
                             <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-vista-admin' %}">Editar</a></li>
                             <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'app_tienda-menu' %} ">Menu</a></li>
                             <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'auth-edit_profile' %}">editar pefil</a></li>
+                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'auth-add_avatar' %}">Avatar</a></li>
+                            <img src="{{imagen_url}}"  style="max-width: 55px;">
+                            
                             {% block admin %}
 
                             {% endblock %}
                             <a class="nav-item px-lg-4" href="{% url 'auth-logout' %}">Logout</a>
                             <p class="small text-muted mb-4 mb-lg-0""> Hola {{request.user.username}} ! </p>
-                            
+                            <img src="" alt="">
                            
                         {% else %}
                             <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'auth-login' %}">Iniciar Sesion</a></li>

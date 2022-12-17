@@ -36,6 +36,7 @@
 
 
                         {% if request.user.is_authenticated %}
+                            <img src="{{imagen_url}}"  style="max-width: 55px;">
                             {% block admin %}
 
                             {% endblock %}

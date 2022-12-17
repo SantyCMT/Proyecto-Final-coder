@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from app_tienda.forms import *
 from app_tienda.models import *
+from app_perfiles.models import Avatar
 from Tienda_online.settings import BASE_DIR
 import os
 from django.views.generic import ListView
@@ -9,7 +10,12 @@ from django.views.generic import ListView
 # Create your views here.
 
 def vista_inicio(request):
-    return render(request, "app_tienda/index.html")
+    if request.user.is_authenticated:
+        imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
+        imagen_url = imagen_model.imagen.url
+    else:
+        imagen_url = ""
+    return render(request, "app_tienda/index.html", {"imagen_url": imagen_url})
 
 def vista_nosotros(request):
     return render(request, "app_tienda/nosotros.html")
